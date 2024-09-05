@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
-import { FaEdit, FaMoon, FaRegEdit, FaRegMoon, FaUserAlt } from "react-icons/fa"
-import { FaUser } from "react-icons/fa6"
+import { FaRegEdit, FaRegMoon, FaUserAlt } from "react-icons/fa"
+
 
 
 

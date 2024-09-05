@@ -19,12 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <CustomCursor />
-      <Drawing />
+      {/* <CustomCursor /> */}
         <main className="main">
             <Nav />
             {children}
         </main>
+      {/* <Drawing /> */}
       </body>
     </html>
   );

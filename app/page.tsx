@@ -1,6 +1,8 @@
 "use client"
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import Notebook from '@components/notebook';
+import TodoInput from '@components/todo-inputs';
 
 
 const Home = () => {
@@ -18,8 +20,12 @@ const Home = () => {
     },[])
 
   return (
-    <div className='text-5xl font-bold opacity-0' ref={titleRef}>
-        ToDo - <span className='font-normal'>草加</span>
+    <div className='' >
+        <h1 ref={titleRef} className='text-5xl font-bold opacity-0'> ToDo - <span className='font-normal'>草加</span></h1>
+
+        <div className='mt-44'>
+            <TodoInput />
+        </div>
     </div>
   )
 }
