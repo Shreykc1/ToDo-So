@@ -2,7 +2,8 @@
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import Notebook from '@components/notebook';
-import TodoInput from '@components/todo-inputs';
+
+import TodoDrawer from '@components/drawer';
 
 
 const Home = () => {
@@ -20,11 +21,13 @@ const Home = () => {
     },[])
 
   return (
-    <div className='' >
-        <h1 ref={titleRef} className='text-5xl font-bold opacity-0'> ToDo - <span className='font-normal'>草加</span></h1>
+    <div className='' suppressHydrationWarning >
+        <h1 ref={titleRef} className='sm:text-7xl text-5xl font-bold opacity-0 font-neue'> ToDo - <span className='font-normal'>草加</span>
+        </h1>
 
         <div className='mt-44'>
-            <TodoInput />
+            {/* <TodoInput /> */}
+                <TodoDrawer />
         </div>
     </div>
   )

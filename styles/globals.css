@@ -54,11 +54,11 @@
   font-family: 'SF';
 }
 
-@media screen and (max-width: 640px) {
+/* @media screen and (max-width: 640px) {
   .main {
     padding: 0;
   }
-}
+} */
 
 /* Tailwind Styles */
 

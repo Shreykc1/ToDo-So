@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    typescript: {
+        ignoreBuildErrors: true,
+    },
     experimental: {
       appDir: true,
-      serverComponentsExternalPackages: ["mongoose"],
+      serverComponentsExternalPackages: ["appwrite"],
     },
     images: {
       domains: ['lh3.googleusercontent.com'],

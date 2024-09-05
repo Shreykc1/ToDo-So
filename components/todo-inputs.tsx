@@ -1,12 +1,63 @@
-import React from 'react'
+"use client"
+import { useEffect, useRef, useState } from 'react'
 import { Checkbox } from './ui/checkbox'
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const TodoInput = () => {
-  return (
-    <section className='w-full border border-gray-300 rounded-md sm:h-10 h-8 flex-between px-5'>
-        <Checkbox className='rounded-full' priority={"high"}/>
-    </section>
-  )
+    const [title, setTitle] = useState('Water plants in the morning🌱');
+    const [status, setStatus] = useState('read');
+    const [isChecked, setIsChecked] = useState(false);
+    const statusRef = useRef(null);
+    const todoRef = useRef(null);
+    const updateStatus = () => {
+        if (isChecked) {
+            setStatus('done');
+        } else {
+            setStatus('read');
+        }
+    };
+    
+
+    useEffect(() => {
+        updateStatus();
+    }, [isChecked]);
+
+    useGSAP(()=>{
+        gsap.from(statusRef.current,{
+            y:50,
+            duration:0.2
+        });
+    },[isChecked]);
+
+    useGSAP(()=>{
+        gsap.to(todoRef.current,{
+            opacity:1,
+            duration:0.5,
+            delay:0.8
+        })
+    },[])
+
+    return (
+        <section suppressHydrationWarning className='w-full border border-gray-400 rounded-md sm:h-14 h-12 flex-between px-5 opacity-0 '
+        ref={todoRef}>
+            <div className='sm:gap-7 gap-3 flex items-center overflow-hidden'>
+                <Checkbox
+                className='rounded-full'
+                priority={"high"}
+                checked={isChecked}
+                onCheckedChange={(checked:any) => {
+                    setIsChecked(checked);
+                }}
+                onClick={(e) => e.stopPropagation()}
+                 />
+                <h2 className='font-semibold font-sf sm:text-lg text-sm overflow-hidden cursor-default'>{title}</h2>
+            </div>
+            <div className='h-6 block overflow-hidden cursor-default'>
+                <p className='text-gray-500 max-sm:text-sm max-sm:mt-[2px]' ref={statusRef}>{status}</p>
+            </div>
+        </section>
+    )
 }
 
 export default TodoInput
