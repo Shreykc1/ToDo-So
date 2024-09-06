@@ -14,8 +14,20 @@ import {
 import { Button } from "./ui/button"
 import TodoInput from "./todo-inputs"
 import Notebook from "./notebook"
+import { useEffect, useState } from "react"
 
 const TodoDrawer = () => {
+
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+      return null;
+    }
+
 
     return (
         <Drawer>
