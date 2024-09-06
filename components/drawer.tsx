@@ -13,16 +13,7 @@ import TodoInput from "./todo-inputs"
 import Notebook from "./notebook"
 import { useEffect, useState } from "react"
 
-type TodoDrawerProps = {
-                title : any,
-                setTitle : any,
-                isChecked : any,
-                setIsChecked : any,
-                status : any,
-                setStatus : any,
-                date:any,
-                setDate:any
-}
+
 
 const TodoDrawer = ({
                 title,
@@ -32,7 +23,9 @@ const TodoDrawer = ({
                 status,
                 setStatus,
                 date,
-                setDate
+                setDate,
+                description,
+                setDescription
 }: TodoDrawerProps) => {
 
     const [isMounted, setIsMounted] = useState(false);
@@ -58,6 +51,8 @@ const TodoDrawer = ({
                 setStatus={setStatus}
                 date={date}
                 setDate={setDate}
+                description={description}
+                setDescription={setDescription}
                 />
             </DrawerTrigger>
             <DrawerContent className="h-3/4 bg-light-2 border-none font-sf p-4">
@@ -70,6 +65,8 @@ const TodoDrawer = ({
                 setStatus={setStatus}
                 date={date}
                 setDate={setDate}
+                description={description}
+                setDescription={setDescription}
                 />
             </DrawerContent>
         </Drawer>

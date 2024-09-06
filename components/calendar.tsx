@@ -14,10 +14,7 @@ import { useState } from "react"
 import { Calendar } from "./ui/calendar"
 import { Loader } from "lucide-react"
 
-type CalendarProps = {
-    date?: Date,
-    setDate: any,
-}
+
 
 const CalendarControls = ({date,setDate}: CalendarProps) =>{
 

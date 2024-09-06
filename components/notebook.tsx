@@ -10,19 +10,6 @@ import { FaFlag, FaRegFlag } from "react-icons/fa6";
 import CalendarControls from "./calendar";
 
 
-
-type TodoDrawerProps = {
-    title : any,
-    setTitle : any,
-    isChecked : any,
-    setIsChecked : any,
-    status : any,
-    setStatus : any,
-    date: any,
-    setDate: any
-}
-
-
 const Notebook = ({
     title,
     setTitle,
@@ -31,10 +18,12 @@ const Notebook = ({
     status,
     setStatus,
     date,
-    setDate
+    setDate,
+    description,
+    setDescription
 }:TodoDrawerProps) => {
 
-const [note, setNote] = useState("");
+
 const formRef = useRef(null);
 const [flag, setFlag] = useState(false);
 
@@ -49,7 +38,8 @@ useGSAP(()=>{
 
 
     const onNoteChange = (e:any) => {
-        setNote(e.target.value);
+
+        setDescription(e.target.value);
     }
     const onNoteHeadingChange = (e:any) => {
         setTitle(e.target.value);
@@ -94,11 +84,12 @@ useGSAP(()=>{
             placeholder="Start making decisions"
             onChange={(e:any) => onNoteChange(e)}
             className="border-none shadow-none"
+            value={description}
             />
 
             <div className="flex-between w-full">
                 <Button className="w-20 font-normal tracking-wide bg-dark-3 border border-gray-500 hover:bg-light-2
-                hover:text-dark-3 text-light-2 shadow-none" type="submit">
+                hover:text-dark-3 text-light-2 shadow-none" type="button">
                     Save
                 </Button>
 
