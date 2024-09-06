@@ -7,15 +7,37 @@ import { useGSAP } from '@gsap/react';
 import gsap from "gsap";
 import { Checkbox } from "./ui/checkbox";
 import { FaFlag, FaRegFlag } from "react-icons/fa6";
+import CalendarControls from "./calendar";
 
 
 
-const Notebook = () => {
-const [isChecked, setIsChecked] = useState(false);
+type TodoDrawerProps = {
+    title : any,
+    setTitle : any,
+    isChecked : any,
+    setIsChecked : any,
+    status : any,
+    setStatus : any,
+    date: any,
+    setDate: any
+}
+
+
+const Notebook = ({
+    title,
+    setTitle,
+    isChecked,
+    setIsChecked,
+    status,
+    setStatus,
+    date,
+    setDate
+}:TodoDrawerProps) => {
+
 const [note, setNote] = useState("");
-const [noteHeading, setNoteHeading] = useState("");
 const formRef = useRef(null);
 const [flag, setFlag] = useState(false);
+
 useGSAP(()=>{
     gsap.to(formRef.current,{
         opacity:1,
@@ -30,14 +52,15 @@ useGSAP(()=>{
         setNote(e.target.value);
     }
     const onNoteHeadingChange = (e:any) => {
-        setNoteHeading(e.target.value);
+        setTitle(e.target.value);
     }
 
     const handleFormSubmit = () => {
         // TODO: CALL AN API FUNCTION TO SEND DATA & RevalidatePath
     }
 
-    const changeFlag = () => {
+    const changeFlag = (e:any) => {
+        e.preventDefault();
         setFlag((prev)=>!prev);
     }
 
@@ -58,9 +81,12 @@ useGSAP(()=>{
                     placeholder="Enter title"
                     className="font-bold text-xl border-none shadow-none"
                     onChange={(e:any) => onNoteHeadingChange(e)}
+                    value={title}
                 />
 
-                <Button className="bg-transparent shadow-none text-black hover:bg-transparent" onClick={changeFlag}>
+                <p className="text-sm">{status}</p>
+
+                <Button className="bg-transparent shadow-none text-black hover:bg-transparent" onClick={(e:any)=>changeFlag(e)}>
                     {flag ? <FaFlag /> : <FaRegFlag />}
                 </Button>
             </div>
@@ -70,10 +96,21 @@ useGSAP(()=>{
             className="border-none shadow-none"
             />
 
-            <Button className="w-20 font-normal tracking-wide bg-transparent border border-gray-500 hover:bg-dark-3
-            hover:text-white text-black shadow-none" type="submit">
-                Save
-            </Button>
+            <div className="flex-between w-full">
+                <Button className="w-20 font-normal tracking-wide bg-dark-3 border border-gray-500 hover:bg-light-2
+                hover:text-dark-3 text-light-2 shadow-none" type="submit">
+                    Save
+                </Button>
+
+
+
+                <CalendarControls
+                date={date}
+                setDate={setDate}
+                />
+
+
+            </div>
 
         </form>
     </div>

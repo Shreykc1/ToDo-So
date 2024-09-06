@@ -9,14 +9,31 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
-
-
-import { Button } from "./ui/button"
 import TodoInput from "./todo-inputs"
 import Notebook from "./notebook"
 import { useEffect, useState } from "react"
 
-const TodoDrawer = () => {
+type TodoDrawerProps = {
+                title : any,
+                setTitle : any,
+                isChecked : any,
+                setIsChecked : any,
+                status : any,
+                setStatus : any,
+                date:any,
+                setDate:any
+}
+
+const TodoDrawer = ({
+                title,
+                setTitle,
+                isChecked,
+                setIsChecked,
+                status,
+                setStatus,
+                date,
+                setDate
+}: TodoDrawerProps) => {
 
     const [isMounted, setIsMounted] = useState(false);
 
@@ -32,10 +49,28 @@ const TodoDrawer = () => {
     return (
         <Drawer>
             <DrawerTrigger className="w-full">
-                <TodoInput />
+                <TodoInput
+                title={title}
+                setTitle={setTitle}
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
+                status={status}
+                setStatus={setStatus}
+                date={date}
+                setDate={setDate}
+                />
             </DrawerTrigger>
             <DrawerContent className="h-3/4 bg-light-2 border-none font-sf p-4">
-                <Notebook />
+                <Notebook
+                title={title}
+                setTitle={setTitle}
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
+                status={status}
+                setStatus={setStatus}
+                date={date}
+                setDate={setDate}
+                />
             </DrawerContent>
         </Drawer>
 
