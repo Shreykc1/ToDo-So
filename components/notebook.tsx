@@ -20,12 +20,14 @@ const Notebook = ({
     date,
     setDate,
     description,
-    setDescription
+    setDescription,
+    flag,
+    setFlag
 }:TodoDrawerProps) => {
 
 
 const formRef = useRef(null);
-const [flag, setFlag] = useState(false);
+
 
 useGSAP(()=>{
     gsap.to(formRef.current,{
@@ -97,6 +99,7 @@ useGSAP(()=>{
 
                 <CalendarControls
                 date={date}
+                //@ts-ignore
                 setDate={setDate}
                 />
 

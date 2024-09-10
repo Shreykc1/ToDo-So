@@ -1,17 +1,48 @@
 declare type TodoDrawerProps = {
-    title : any,
-    setTitle : any,
-    isChecked : any,
-    setIsChecked : any,
-    status : any,
-    setStatus : any,
-    date:any,
-    setDate:any,
-    description:any,
-    setDescription:any
+    title : string,
+    setTitle : React.Dispatch<React.SetStateAction<string>>,
+    isChecked : boolean,
+    setIsChecked : React.Dispatch<React.SetStateAction<boolean>>,
+    status : string,
+    setStatus : React.Dispatch<React.SetStateAction<string>>,
+    date?: Date,
+    setDate? : React.Dispatch<React.SetStateAction<Date>> ,
+    description: string,
+    setDescription:React.Dispatch<React.SetStateAction<string>>,
+    flag: boolean,
+    setFlag: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 declare type CalendarProps = {
     date?: Date,
     setDate: ()=> void,
 }
+
+
+declare type IContextType = {
+    user: IUser,
+    isLoading: boolean,
+    setUser: React.Dispatch<React.SetStateAction<IUser>>;
+    isAuthenticated: boolean,
+    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+    checkAuthUser: () => Promise<boolean>;
+}
+
+
+declare type IUser = {
+    id: string;
+    name: string;
+    username: string;
+    email: string;
+    imageURL: string;
+    imageID?:string;
+    bio: string;
+    isVerified?: boolean;
+  };
+
+  declare type INewUser = {
+    name: string;
+    email: string;
+    username: string;
+    password: string;
+  };

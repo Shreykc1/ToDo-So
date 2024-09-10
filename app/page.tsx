@@ -6,6 +6,8 @@ import TodoDrawer from '@components/drawer';
 
 const Home = () => {
     const titleRef = useRef(null);
+
+    // TODO: Fetch Data from user ID by api
     const [title, setTitle] = useState('Water plants in the morning🌱');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('read');
@@ -25,7 +27,7 @@ const Home = () => {
 
   return (
     <div className='' suppressHydrationWarning >
-        <h1 ref={titleRef} className='sm:text-7xl text-5xl font-bold opacity-0 font-neue'> ToDo - <span className='font-normal'>草加</span>
+        <h1 ref={titleRef} className='sm:text-7xl text-5xl font-bold opacity-0 font-neue'> Todo - <span className='font-normal'>草加</span>
         </h1>
 
         <div className='mt-44'>
@@ -37,6 +39,7 @@ const Home = () => {
                 status={status}
                 setStatus={setStatus}
                 date={date}
+                //@ts-ignore
                 setDate={setDate}
                 description={description}
                 setDescription={setDescription}

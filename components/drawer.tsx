@@ -25,7 +25,9 @@ const TodoDrawer = ({
                 date,
                 setDate,
                 description,
-                setDescription
+                setDescription,
+                flag,
+                setFlag
 }: TodoDrawerProps) => {
 
     const [isMounted, setIsMounted] = useState(false);
@@ -53,6 +55,8 @@ const TodoDrawer = ({
                 setDate={setDate}
                 description={description}
                 setDescription={setDescription}
+                flag={flag}
+                setFlag={setFlag}
                 />
             </DrawerTrigger>
             <DrawerContent className="h-3/4 bg-light-2 border-none font-sf p-4">
@@ -67,6 +71,8 @@ const TodoDrawer = ({
                 setDate={setDate}
                 description={description}
                 setDescription={setDescription}
+                flag={flag}
+                setFlag={setFlag}
                 />
             </DrawerContent>
         </Drawer>
