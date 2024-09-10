@@ -65,7 +65,7 @@ useGSAP(()=>{
                 </Button>
             </div>
             <Textarea
-            placeholder="Start making decisions"
+            placeholder="Start making decisions..."
             onChange={(e:any) => onNoteChange(e)}
             className="border-none shadow-none"
             />
