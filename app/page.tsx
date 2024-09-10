@@ -1,14 +1,17 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import Notebook from '@components/notebook';
-
 import TodoDrawer from '@components/drawer';
 
 
 const Home = () => {
     const titleRef = useRef(null);
-
+    const [title, setTitle] = useState('Water plants in the morning🌱');
+    const [description, setDescription] = useState('');
+    const [status, setStatus] = useState('read');
+    const [isChecked, setIsChecked] = useState(false);
+    const [date, setDate] = useState();
+    console.log(date)
     useEffect(()=>{
         gsap.to(
             titleRef.current,
@@ -26,8 +29,18 @@ const Home = () => {
         </h1>
 
         <div className='mt-44'>
-            {/* <TodoInput /> */}
-                <TodoDrawer />
+                <TodoDrawer
+                title={title}
+                setTitle={setTitle}
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
+                status={status}
+                setStatus={setStatus}
+                date={date}
+                setDate={setDate}
+                description={description}
+                setDescription={setDescription}
+                />
         </div>
     </div>
   )

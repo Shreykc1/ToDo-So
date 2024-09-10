@@ -4,10 +4,16 @@ import { Checkbox } from './ui/checkbox'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-const TodoInput = () => {
-    const [title, setTitle] = useState('Water plants in the morning🌱');
-    const [status, setStatus] = useState('read');
-    const [isChecked, setIsChecked] = useState(false);
+
+
+const TodoInput = ({
+                title,
+                setTitle,
+                isChecked,
+                setIsChecked,
+                status,
+                setStatus,
+}:TodoDrawerProps) => {
     const statusRef = useRef(null);
     const todoRef = useRef(null);
     const updateStatus = () => {
@@ -17,7 +23,7 @@ const TodoInput = () => {
             setStatus('read');
         }
     };
-    
+
 
     useEffect(() => {
         updateStatus();
