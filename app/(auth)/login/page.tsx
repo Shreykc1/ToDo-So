@@ -14,13 +14,17 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { EyeIcon } from "lucide-react"
-import { EyeOpenIcon } from "@radix-ui/react-icons"
+import { useRouter } from "next/navigation"
+import { useUserContext } from "@context/AuthContext"
+import { deleteAllActiveSessions, signInAccount } from "@utils/userActions"
+
 
 
 const SignInForm = () => {
+    const router = useRouter();
+    const { checkAuthUser, isLoading } = useUserContext();
 
-    // 1. Define your form.
+
   const form = useForm<z.infer<typeof SignInValidation>>({
     resolver: zodResolver(SignInValidation),
     defaultValues: {
@@ -30,8 +34,26 @@ const SignInForm = () => {
   })
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof SignInValidation>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof SignInValidation>) {
+    try {
+        const session = await signInAccount(
+            values.email,
+            values.password
+        );
+
+        const isLoggedIn = await checkAuthUser();
+
+        if(isLoggedIn){
+            // form.reset();
+            router.push("/");
+        } else{
+            deleteAllActiveSessions();
+            // TODO: Return toast ....
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   return (
@@ -67,7 +89,7 @@ const SignInForm = () => {
                 type="password"
                 className="shad-input"
                 placeholder="Enter a valid password" {...field}
-                
+
                 />
               </FormControl>
               <FormMessage />
@@ -83,3 +105,6 @@ const SignInForm = () => {
 }
 
 export default SignInForm
+function checkAuthUser() {
+    throw new Error("Function not implemented.")
+}

@@ -14,11 +14,14 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useRouter } from "next/navigation"
+import { useUserContext } from "@context/AuthContext"
+import { createUserAccount, signInAccount } from "@utils/userActions"
 
 
 const SignUpForm = () => {
-
-    // 1. Define your form.
+    const router = useRouter();
+    const { checkAuthUser, isLoading } = useUserContext();
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
     defaultValues: {
@@ -28,8 +31,30 @@ const SignUpForm = () => {
   })
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof SignupValidation>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof SignupValidation>) {
+    try {
+        const newUser = await createUserAccount(values);
+
+        if(!newUser) throw Error;
+
+        const session = await signInAccount(
+            values.email,
+            values.password
+        );
+            if(!session) throw Error;
+            const isLoggedIn = await checkAuthUser();
+
+            if(isLoggedIn){
+             form.reset();
+             router.push('/');
+            }
+            else{
+             // TODO: REturn toast
+            }
+
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   return (

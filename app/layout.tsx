@@ -4,6 +4,7 @@ import "@styles/globals.css";
 import Nav from "@components/navbar";
 import CustomCursor from "@components/utils/custom-cursor";
 import Drawing from "@components/utils/drawing";
+import AuthContext from "@context/AuthContext";
 
 
 export const metadata: Metadata = {
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <AuthContext >
       {/* <CustomCursor /> */}
         <main className="main">
             <Nav />
             {children}
         </main>
+        </AuthContext>
       {/* <Drawing /> */}
       </body>
     </html>

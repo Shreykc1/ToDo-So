@@ -32,17 +32,13 @@ declare type IContextType = {
 declare type IUser = {
     id: string;
     name: string;
-    username: string;
     email: string;
     imageURL: string;
     imageID?:string;
-    bio: string;
-    isVerified?: boolean;
   };
 
   declare type INewUser = {
     name: string;
     email: string;
-    username: string;
     password: string;
   };

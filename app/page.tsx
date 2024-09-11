@@ -14,6 +14,8 @@ const Home = () => {
     const [status, setStatus] = useState('read');
     const [isChecked, setIsChecked] = useState(false);
     const [date, setDate] = useState();
+    const [flag, setFlag] = useState(false);
+
     useEffect(()=>{
         gsap.to(
             titleRef.current,
@@ -43,6 +45,8 @@ const Home = () => {
                 setDate={setDate}
                 description={description}
                 setDescription={setDescription}
+                flag={flag}
+                setFlag={setFlag}
                 />
         </div>
     </div>

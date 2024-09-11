@@ -53,7 +53,7 @@ useGSAP(()=>{
 
     const changeFlag = (e:any) => {
         e.preventDefault();
-        setFlag((prev)=>!prev);
+        setFlag((prev) => !prev);
     }
 
   return (
@@ -82,6 +82,8 @@ useGSAP(()=>{
                     {flag ? <FaFlag /> : <FaRegFlag />}
                 </Button>
             </div>
+
+
             <Textarea
             placeholder="Start making decisions..."
             onChange={(e:any) => onNoteChange(e)}

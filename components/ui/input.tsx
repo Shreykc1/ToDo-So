@@ -4,13 +4,11 @@ import { cn } from "@/lib/utils"
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-    suffix?: React.ReactNode
   }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ suffix, className, type, ...props }, ref) => {
+  ({ className, type, ...props }, ref) => {
     return (
-      <div className="flex gap-2 items-center">
         <input
         type={type}
         className={cn(
@@ -20,10 +18,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         {...props}
         />
-        <div className="text-gray-500">
-            {suffix}
-        </div>
-      </div>
     )
   }
 )
