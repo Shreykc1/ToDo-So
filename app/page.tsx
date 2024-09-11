@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import TodoDrawer from '@components/drawer';
+import { appwriteConfig } from './api/appwrite/config';
 
 
 const Home = () => {
@@ -13,7 +14,6 @@ const Home = () => {
     const [status, setStatus] = useState('read');
     const [isChecked, setIsChecked] = useState(false);
     const [date, setDate] = useState();
-    console.log(date)
     useEffect(()=>{
         gsap.to(
             titleRef.current,
