@@ -2,19 +2,23 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import TodoDrawer from '@components/drawer';
-import { appwriteConfig } from './api/appwrite/config';
+import { useUserContext } from '@context/AuthContext';
+
 
 
 const Home = () => {
     const titleRef = useRef(null);
 
-    // TODO: Fetch Data from user ID by api
+    // TODO: DATA FETCHED FROM API JUST DISPLAY IT
     const [title, setTitle] = useState('Water plants in the morning🌱');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('read');
     const [isChecked, setIsChecked] = useState(false);
     const [date, setDate] = useState();
     const [flag, setFlag] = useState(false);
+    const [allTodos, setAllTodos] = useState([]);
+    const { user, isLoading } = useUserContext();
+    console.log(allTodos);
 
     useEffect(()=>{
         gsap.to(
@@ -25,7 +29,31 @@ const Home = () => {
                 opacity:1
             }
         )
-    },[])
+    },[]);
+
+
+    useEffect(() => {
+        const fetchTodos = async (userId: string) => {
+            const response = await fetch("/api/user/allTodos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    userId
+                })
+            });
+
+            const data = await response.json();
+            setAllTodos(data);
+        };
+
+
+        if (!isLoading && user?.id) {
+            console.log(user.id);
+            fetchTodos(user.id);
+        }
+    }, [user, isLoading]);
 
   return (
     <div className='' suppressHydrationWarning >

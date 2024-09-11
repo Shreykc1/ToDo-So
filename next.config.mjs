@@ -8,7 +8,7 @@ const nextConfig = {
       serverComponentsExternalPackages: ["appwrite"],
     },
     images: {
-      domains: ['lh3.googleusercontent.com'],
+      domains: ['cloud.appwrite.io'],
     },
     webpack(config) {
       config.experiments = {
