@@ -1,16 +1,16 @@
 declare type TodoDrawerProps = {
     title : string,
-    setTitle : React.Dispatch<React.SetStateAction<string>>,
+    setTitle? : React.Dispatch<React.SetStateAction<string>>,
     isChecked : boolean,
-    setIsChecked : React.Dispatch<React.SetStateAction<boolean>>,
+    setIsChecked? : React.Dispatch<React.SetStateAction<boolean>>,
     status : string,
-    setStatus : React.Dispatch<React.SetStateAction<string>>,
+    setStatus? : React.Dispatch<React.SetStateAction<string>>,
     date?: Date,
     setDate? : React.Dispatch<React.SetStateAction<Date>> ,
     description: string,
-    setDescription:React.Dispatch<React.SetStateAction<string>>,
+    setDescription?:React.Dispatch<React.SetStateAction<string>>,
     flag: boolean,
-    setFlag: React.Dispatch<React.SetStateAction<boolean>>
+    setFlag?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 declare type CalendarProps = {

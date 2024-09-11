@@ -76,6 +76,26 @@ const Home = () => {
                 flag={flag}
                 setFlag={setFlag}
                 />
+
+                {/* {
+                    allTodos.map((todo)=>(
+                        <TodoDrawer
+                title={todo.title}
+                setTitle={setTitle}
+                isChecked={todo.isChecked}
+                setIsChecked={setIsChecked}
+                status={todo.status}
+                setStatus={setStatus}
+                date={todo.date}
+                //@ts-ignore
+                setDate={setDate}
+                description={description}
+                setDescription={setDescription}
+                flag={flag}
+                setFlag={todo.setFlag}
+                />
+                    ))
+                } */}
         </div>
     </div>
   )
