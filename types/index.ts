@@ -42,3 +42,21 @@ declare type IUser = {
     email: string;
     password: string;
   };
+
+
+  declare type TodoContextType = {
+    title: string;
+    setTitle: React.Dispatch<React.SetStateAction<string>>;
+    description: string;
+    setDescription: React.Dispatch<React.SetStateAction<string>>;
+    status: string;
+    setStatus: React.Dispatch<React.SetStateAction<string>>;
+    isChecked: boolean;
+    setIsChecked: React.Dispatch<React.SetStateAction<boolean>>;
+    date: Date | undefined;
+    setDate: React.Dispatch<React.SetStateAction<Date>>;
+    flag: boolean;
+    setFlag: React.Dispatch<React.SetStateAction<boolean>>;
+    allTodos: any[];
+    setAllTodos: (todos: any[]) => void;
+};

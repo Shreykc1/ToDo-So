@@ -3,22 +3,23 @@ import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import TodoDrawer from '@components/drawer';
 import { useUserContext } from '@context/AuthContext';
+import { useTodoContext } from '@context/TodoContext';
 
 
 
 const Home = () => {
     const titleRef = useRef(null);
 
-    // TODO: DATA FETCHED FROM API JUST DISPLAY IT
     const [title, setTitle] = useState('Water plants in the morning🌱');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('read');
     const [isChecked, setIsChecked] = useState(false);
     const [date, setDate] = useState();
     const [flag, setFlag] = useState(false);
-    const [allTodos, setAllTodos] = useState([]);
+    // const [allTodos, setAllTodos] = useState([]);
     const { user, isLoading } = useUserContext();
-    console.log(allTodos);
+    const { allTodos,setAllTodos } = useTodoContext();
+
 
     useEffect(()=>{
         gsap.to(
@@ -32,28 +33,30 @@ const Home = () => {
     },[]);
 
 
-    useEffect(() => {
-        const fetchTodos = async (userId: string) => {
-            const response = await fetch("/api/user/allTodos", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    userId
-                })
-            });
+    // useEffect(() => {
+    //     const fetchTodos = async (userId: string) => {
+    //         const response = await fetch("/api/user/allTodos", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 userId
+    //             })
+    //         });
 
-            const data = await response.json();
-            setAllTodos(data);
-        };
+    //         const data = await response.json();
+    //         console.log(data)
+    //         setAllTodos(data);
 
 
-        if (!isLoading && user?.id) {
-            console.log(user.id);
-            fetchTodos(user.id);
-        }
-    }, [user, isLoading]);
+    //     };
+
+
+    //     if (!isLoading && user?.id) {
+    //         fetchTodos(user.id);
+    //     }
+    // }, [user, isLoading]);
 
   return (
     <div className='' suppressHydrationWarning >
@@ -61,21 +64,7 @@ const Home = () => {
         </h1>
 
         <div className='mt-44'>
-                <TodoDrawer
-                title={title}
-                setTitle={setTitle}
-                isChecked={isChecked}
-                setIsChecked={setIsChecked}
-                status={status}
-                setStatus={setStatus}
-                date={date}
-                //@ts-ignore
-                setDate={setDate}
-                description={description}
-                setDescription={setDescription}
-                flag={flag}
-                setFlag={setFlag}
-                />
+                <TodoDrawer />
 
                 {/* {
                     allTodos.map((todo)=>(

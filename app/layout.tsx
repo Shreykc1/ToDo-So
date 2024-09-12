@@ -5,30 +5,33 @@ import Nav from "@components/navbar";
 import CustomCursor from "@components/utils/custom-cursor";
 import Drawing from "@components/utils/drawing";
 import AuthContext from "@context/AuthContext";
+import { TodoProvider } from "@context/TodoContext";
 
 
 export const metadata: Metadata = {
-  title: "Todo-So",
-  description: "The Better Todoist",
+    title: "Todo-So",
+    description: "The Better Todoist",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <AuthContext >
-      {/* <CustomCursor /> */}
-        <main className="main">
-            <Nav />
-            {children}
-        </main>
-        </AuthContext>
-      {/* <Drawing /> */}
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" suppressHydrationWarning>
+            <body>
+                <AuthContext >
+                    <TodoProvider>
+                        {/* <CustomCursor /> */}
+                        <main className="main">
+                            <Nav />
+                            {children}
+                        </main>
+                {/* <Drawing /> */}
+                    </TodoProvider>
+                </AuthContext>
+            </body>
+        </html>
+    );
 }
