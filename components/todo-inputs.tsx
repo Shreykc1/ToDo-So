@@ -3,10 +3,12 @@ import { useEffect, useRef, useState } from 'react'
 import { Checkbox } from './ui/checkbox'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { revalidatePath } from 'next/cache';
 
 
 
 const TodoInput = ({
+                id,
                 title,
                 setTitle,
                 isChecked,
@@ -16,6 +18,7 @@ const TodoInput = ({
 }:TodoDrawerProps) => {
     const statusRef = useRef(null);
     const todoRef = useRef(null);
+
     const updateStatus = () => {
         if (isChecked) {
             //@ts-ignore
@@ -44,8 +47,29 @@ const TodoInput = ({
             duration:0.5,
             delay:0.8
         })
-    },[])
+    },[]);
 
+
+    useEffect(()=>{
+        const changeStatus = async ( id: string, isChecked: boolean, status:string ) => {
+            const response = await fetch("/api/todo/todo-input", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    id,
+                    isChecked,
+                    status
+                }),
+            });
+
+            const data = await response.json();
+        };
+        changeStatus(id!,isChecked,status);
+
+    },[isChecked, status]);
+    
     return (
         <section suppressHydrationWarning className='w-full border border-gray-400 rounded-md sm:h-14 h-12 flex-between px-5 opacity-0 '
         ref={todoRef}>

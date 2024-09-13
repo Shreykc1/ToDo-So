@@ -38,6 +38,7 @@ const Home = () => {
             });
 
             const data = await response.json();
+
             setAllTodos(data);
             setIsTodoLoading(false);
         };
@@ -60,7 +61,9 @@ const Home = () => {
             ) : (
                 <div className="mt-44">
                     {allTodos.map((todo, index) => (
-                        <TodoDrawer key={index} todo={todo} />
+                       <div key={index} className="pt-5">
+                             <TodoDrawer todo={todo} />
+                       </div>
                     ))}
                 </div>
             )}
