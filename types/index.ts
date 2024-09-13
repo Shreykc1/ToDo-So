@@ -61,4 +61,6 @@ declare type IUser = {
     setAllTodos:  React.Dispatch<React.SetStateAction<any[]>>;
     isLoading: boolean;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedTodo: boolean;
+    setSelectedTodo: React.Dispatch<React.SetStateAction<any>>;
 };

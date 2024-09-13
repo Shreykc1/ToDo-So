@@ -20,6 +20,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
     const [flag, setFlag] = useState(false);
     const [allTodos, setAllTodos] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [selectedTodo, setSelectedTodo] = useState<any>(null);
     return (
         <TodoContext.Provider value={{
             title, setTitle,
@@ -30,6 +31,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
             date, setDate,
             flag, setFlag,
             allTodos, setAllTodos,
+            selectedTodo,setSelectedTodo,
             isLoading, setIsLoading }}>
             {children}
         </TodoContext.Provider>
