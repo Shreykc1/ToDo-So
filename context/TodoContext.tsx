@@ -12,14 +12,14 @@ export const useTodoContext = () => {
 };
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
-    const [title, setTitle] = useState('Water plants in the morning🌱');
+    const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('read');
     const [isChecked, setIsChecked] = useState(false);
     const [date, setDate] = useState<Date | undefined>(undefined);
     const [flag, setFlag] = useState(false);
-    const [allTodos, setAllTodos] = useState<any[]>([]); // Add allTodos and setAllTodos
-
+    const [allTodos, setAllTodos] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     return (
         <TodoContext.Provider value={{
             title, setTitle,
@@ -29,8 +29,8 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
             //@ts-ignore
             date, setDate,
             flag, setFlag,
-            allTodos, setAllTodos  // Provide allTodos and setAllTodos
-        }}>
+            allTodos, setAllTodos,
+            isLoading, setIsLoading }}>
             {children}
         </TodoContext.Provider>
     );

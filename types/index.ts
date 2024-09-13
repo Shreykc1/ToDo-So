@@ -58,5 +58,7 @@ declare type IUser = {
     flag: boolean;
     setFlag: React.Dispatch<React.SetStateAction<boolean>>;
     allTodos: any[];
-    setAllTodos: (todos: any[]) => void;
+    setAllTodos:  React.Dispatch<React.SetStateAction<any[]>>;
+    isLoading: boolean;
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };

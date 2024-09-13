@@ -18,8 +18,10 @@ const TodoInput = ({
     const todoRef = useRef(null);
     const updateStatus = () => {
         if (isChecked) {
+            //@ts-ignore
             setStatus('done');
         } else {
+            //@ts-ignore
             setStatus('read');
         }
     };
@@ -53,6 +55,7 @@ const TodoInput = ({
                 priority={"high"}
                 checked={isChecked}
                 onCheckedChange={(checked:any) => {
+                    //@ts-ignore
                     setIsChecked(checked);
                 }}
                 onClick={(e) => e.stopPropagation()}
