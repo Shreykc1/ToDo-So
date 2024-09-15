@@ -26,16 +26,24 @@ const NewDrawer = () => {
 
 
     return (
-        <Drawer>
+            <>
+                <div className="sm:hidden block font-sf p-4">
+                <NewNotebook />
+            </div>
+
+            {
+                <div className="max-sm:hidden block w-4">
+                     <Drawer>
             <DrawerTrigger>
-                <FaRegEdit />
+                <FaRegEdit className="mt-1"/>
             </DrawerTrigger>
             <DrawerContent className="h-3/4 bg-light-2 border-none font-sf p-4">
                 <NewNotebook />
             </DrawerContent>
         </Drawer>
-
-
+                </div>
+            }
+            </>
 
     )
 }

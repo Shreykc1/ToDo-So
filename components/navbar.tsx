@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import { FaRegEdit, FaRegMoon, FaUserAlt } from "react-icons/fa"
+import { FaEdit, FaRegEdit, FaRegMoon, FaUserAlt } from "react-icons/fa"
 import { signOutAccount } from "@utils/userActions"
 import { Button } from "./ui/button"
 import { revalidatePath } from "next/cache"
@@ -19,7 +19,8 @@ const Nav = () => {
         revalidatePath('/ ');
     }
     return (
-        <nav className='flex-between sticky top-0 left-0 w-full rounded-3xl p-1 mb-14 h-16'>
+        <>
+            <nav className='max-sm:hidden flex-between sticky top-0 left-0 w-full rounded-3xl p-1 mb-14 h-16'>
             <Link href="/">
                 <p className="font-normal text-lg">草加</p>
             </Link>
@@ -31,7 +32,7 @@ const Nav = () => {
                </p>
                }
 
-                <NewDrawer />
+                <NewDrawer/>
 
                 <FaRegMoon className="mt-[5px]"/>
                 <button type="submit" onClick={signOut} className="" >
@@ -39,6 +40,27 @@ const Nav = () => {
                 </button>
             </div>
         </nav>
+
+               {/* For mobile devices  */}
+        {
+            <nav className='sm:hidden flex-between sticky top-0 left-0 w-full rounded-3xl p-1 mb-14 h-16'>
+            <Link href="/">
+                <p className="font-normal text-lg text-gray-500 ">草加</p>
+            </Link>
+
+            <div className="flex gap-5">
+               {isLoading ? <Loader />
+               :  <p className="text-gray-500">
+                    hey, {user.name}
+               </p>
+               }
+
+            </div>
+        </nav>
+        }
+
+
+        </>
     )
 }
 

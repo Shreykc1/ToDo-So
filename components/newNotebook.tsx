@@ -81,7 +81,6 @@ useGSAP(()=>{
             <div className="flex-between w-full">
             <Checkbox
                 className='rounded-full mt-[1px]'
-                priority={"high"}
                 checked={isChecked}
                 onCheckedChange={(checked:any) => {
                     setIsChecked(checked);
@@ -94,8 +93,6 @@ useGSAP(()=>{
                     onChange={(e:any) => onNoteHeadingChange(e)}
                     value={title}
                 />
-
-                <p className="text-sm">{status}</p>
 
                 <Button className="bg-transparent shadow-none text-black hover:bg-transparent" onClick={(e:any)=>changeFlag(e)}>
                     {flag ? <FaFlag /> : <FaRegFlag />}
@@ -110,7 +107,7 @@ useGSAP(()=>{
             value={description}
             />
 
-            <div className="flex-between w-full">
+            <div className="flex-between w-full mt-10">
                 <Button className="w-20 font-normal tracking-wide bg-dark-3 border border-gray-500 hover:bg-light-2
                 hover:text-dark-3 text-light-2 shadow-none" type="submit">
                     Save

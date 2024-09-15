@@ -8,7 +8,7 @@ export const POST = async (request: any) =>{
         const allTodos = await databases.listDocuments(
             appwriteConfig.databaseId,
             appwriteConfig.todoCollectionId,
-            [Query.equal("user",userId), Query.orderAsc("$createdAt")]
+            [Query.equal("user",userId), Query.orderDesc("flag")]
         );
         if (!allTodos) throw Error;
         return new Response(JSON.stringify(allTodos.documents), { status:200 })

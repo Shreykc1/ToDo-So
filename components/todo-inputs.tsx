@@ -4,6 +4,8 @@ import { Checkbox } from './ui/checkbox'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { revalidatePath } from 'next/cache';
+import { Flag } from 'lucide-react';
+import { FaFlag } from 'react-icons/fa6';
 
 
 
@@ -15,6 +17,7 @@ const TodoInput = ({
                 setIsChecked,
                 status,
                 setStatus,
+                flag
 }:TodoDrawerProps) => {
     const statusRef = useRef(null);
     const todoRef = useRef(null);
@@ -69,14 +72,13 @@ const TodoInput = ({
         changeStatus(id!,isChecked,status);
 
     },[isChecked, status]);
-    
     return (
         <section suppressHydrationWarning className='w-full border border-gray-400 rounded-md sm:h-14 h-12 flex-between px-5 opacity-0 '
         ref={todoRef}>
             <div className='sm:gap-7 gap-3 flex items-center overflow-hidden'>
                 <Checkbox
                 className='rounded-full'
-                priority={"high"}
+                priority={flag}
                 checked={isChecked}
                 onCheckedChange={(checked:any) => {
                     //@ts-ignore
@@ -89,6 +91,7 @@ const TodoInput = ({
             <div className='h-6 block overflow-hidden cursor-default'>
                 <p className='text-gray-500 max-sm:text-sm max-sm:mt-[2px]' ref={statusRef}>{status}</p>
             </div>
+
         </section>
     )
 }
