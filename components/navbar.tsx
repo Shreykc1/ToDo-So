@@ -1,22 +1,28 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import { FaEdit, FaRegEdit, FaRegMoon, FaUserAlt } from "react-icons/fa"
+import { FaCalendar, FaEdit, FaRegEdit, FaRegMoon, FaUserAlt } from "react-icons/fa"
 import { signOutAccount } from "@utils/userActions"
 import { Button } from "./ui/button"
 import { revalidatePath } from "next/cache"
 import { Loader, LogOut, LogOutIcon } from "lucide-react"
 import { useUserContext } from "@context/AuthContext"
 import NewDrawer from "./newDrawer"
+import { useRouter } from "next/navigation"
+
 
 
 
 
 const Nav = () => {
+    const router = useRouter();
     const { user, isLoading } = useUserContext();
      const signOut = async() => {
         await signOutAccount();
         revalidatePath('/ ');
+    }
+    const reminder = () => {
+        router.push('/reminder')
     }
     return (
         <>
@@ -26,13 +32,17 @@ const Nav = () => {
             </Link>
 
             <div className="flex gap-14">
-               {isLoading ? <Loader />
+               { isLoading ? <Loader />
                :  <p>
                     hey, {user.name}
                </p>
                }
 
                 <NewDrawer/>
+
+               <button onClick={reminder}>
+                    <FaCalendar />
+               </button>
 
                 <FaRegMoon className="mt-[5px]"/>
                 <button type="submit" onClick={signOut} className="" >
