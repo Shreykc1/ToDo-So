@@ -9,6 +9,7 @@ import { Loader, LogOut, LogOutIcon } from "lucide-react"
 import { useUserContext } from "@context/AuthContext"
 import NewDrawer from "./newDrawer"
 import { useRouter } from "next/navigation"
+import { FaUser } from "react-icons/fa6"
 
 
 
@@ -23,6 +24,9 @@ const Nav = () => {
     }
     const reminder = () => {
         router.push('/reminder')
+    }
+    const profile = () => {
+        router.push('/profile')
     }
     return (
         <>
@@ -47,6 +51,12 @@ const Nav = () => {
                </button>
 
                 <FaRegMoon className="mt-[5px]"/>
+
+
+                <button onClick={profile}>
+                    <FaUser />
+               </button>
+
                 <button type="submit" onClick={signOut} className="" >
                     <LogOut className="text-black h-5 w-5 mt-1" />
                 </button>
