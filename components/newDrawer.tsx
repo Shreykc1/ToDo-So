@@ -12,7 +12,7 @@ import NewNotebook from "./newNotebook"
 
 
 
-const NewDrawer = () => {
+const NewDrawer = ({children}:{children: React.ReactNode}) => {
 
     const [isMounted, setIsMounted] = useState(false);
 
@@ -25,9 +25,10 @@ const NewDrawer = () => {
     }
 
 
+
     return (
             <>
-                <div className="sm:hidden block font-sf p-4">
+            <div className="sm:hidden block font-sf p-4">
                 <NewNotebook />
             </div>
 
@@ -35,7 +36,7 @@ const NewDrawer = () => {
                 <div className="max-sm:hidden block w-4">
                      <Drawer>
             <DrawerTrigger>
-                <FaRegEdit className="mt-1"/>
+                {children}
             </DrawerTrigger>
             <DrawerContent className="h-3/4 bg-light-2 border-none font-sf p-4">
                 <NewNotebook />

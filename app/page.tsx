@@ -8,9 +8,14 @@ import { Loader } from "lucide-react";
 import { formatDate, getRandomValue } from "@utils/actions";
 import { Separator } from "@components/ui/separator";
 import { useGSAP } from "@gsap/react";
+import { Button } from "@components/ui/button";
+import Router from "next/router";
+import { useRouter } from "next/navigation";
+import NewDrawer from "@components/newDrawer";
 
 const Home = () => {
     const titleRef = useRef(null);
+    const router = useRouter();
     const { user, isLoading } = useUserContext();
     const ikigaiRef = useRef(null);
     const ikigai = ['do what you love','do what what you are good at it','do the world need it','can you be paid for it'];
@@ -64,6 +69,9 @@ const Home = () => {
         setQuote(getRandomValue(ikigai));
     }, [user, isLoading, setAllTodos, setIsTodoLoading]);
 
+
+
+
     return (
         <div className="flex flex-col" suppressHydrationWarning>
             <h1 ref={titleRef} className="sm:text-7xl text-5xl font-bold opacity-0 font-neue">
@@ -84,11 +92,23 @@ const Home = () => {
                     <h3 className="sm:text-lg text-sm text-gray-400 overflow-hidden h-6" ref={ikigaiRef}>{quote}</h3>
                     </div>
                     <Separator className="mt-2"/>
-                    {allTodos.map((todo, index) => (
-                       <div key={index} className="pt-5">
-                             <TodoDrawer todo={todo} />
-                       </div>
-                    ))}
+                    {
+                        allTodos.length !== 0 ?
+                        allTodos.map((todo, index) => (
+                            <div key={index} className="pt-5">
+                                  <TodoDrawer todo={todo} />
+                            </div>
+                         ))
+                         : <div className="w-full flex-center flex-col mt-32">
+                            <h1 className="font-bold">No tasks scheduled for today</h1>
+                            <p className="text-gray-600">start by adding a todo</p>
+                                <div className="max-sm:hidden block">
+                                <NewDrawer >
+                                    <Button className="mt-6 relative right-8">Add Todo</Button>
+                                </NewDrawer>
+                                </div>
+                         </div>
+                    }
                 </div>
             )}
         </div>

@@ -38,7 +38,9 @@ const Nav = () => {
                </p>
                }
 
-                <NewDrawer/>
+                <NewDrawer>
+                    <FaRegEdit className="mt-1" />
+                </NewDrawer>
 
                <button onClick={reminder}>
                     <FaCalendar />
