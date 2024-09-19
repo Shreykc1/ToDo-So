@@ -16,7 +16,7 @@ const Profile = () => {
                     height={200}
                     className='rounded-full'
                 />
-                <h1 className='mt-8 h1-bold '>{user.name}</h1>
+                <h1 className='mt-8 h1-bold'>{user.name}</h1>
             </div>
 
         </div>

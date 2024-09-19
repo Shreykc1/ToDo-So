@@ -1,8 +1,7 @@
 // components/ThemeToggle.js
 import { IconMoon, IconMoon2, IconSun } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
-import { FaMoon } from 'react-icons/fa';
-import { FaSun } from 'react-icons/fa';
+
 
 const ThemeToggle = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);

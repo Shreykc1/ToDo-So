@@ -12,6 +12,10 @@ module.exports = {
     darkMode: 'class',
     theme: {
     	extend: {
+            boxShadow: {
+                'custom': 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px',
+                'custom-inset': 'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
+              },
     		fontFamily: {
     			satoshi: ['Satoshi', 'sans-serif'],
     			inter: ['Inter', 'sans-serif'],

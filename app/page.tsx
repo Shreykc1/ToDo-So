@@ -73,7 +73,7 @@ const Home = () => {
 
 
     return (
-        <div className="flex flex-col" suppressHydrationWarning>
+        <div className="flex flex-col h-screen" suppressHydrationWarning>
             <h1 ref={titleRef} className="sm:text-7xl text-5xl font-bold opacity-0 font-neue">
                 Todo - <span className="font-normal">草加</span>
             </h1>

@@ -99,7 +99,6 @@ useGSAP(()=>{
             <div className="flex-between w-full">
             <Checkbox
                 className='rounded-full mt-[1px]'
-                priority={"high"}
                 checked={isChecked}
                 onCheckedChange={(checked:any) => {
                     //@ts-ignore

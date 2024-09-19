@@ -7,8 +7,8 @@ import Drawing from "@components/utils/drawing";
 import AuthContext from "@context/AuthContext";
 import { TodoProvider } from "@context/TodoContext";
 import BottomBar from "@components/bottom-bar";
-import { ThemeProvider } from "@provider/theme-provider";
-import { useTheme } from "next-themes";
+
+
 
 
 export const metadata: Metadata = {
@@ -32,11 +32,13 @@ export default function RootLayout({
                         {/* <CustomCursor /> */}
 
                         <main className={`main `}>
+                            <div className="app">
                             <Nav />
                             {children}
+                            </div>
                         </main>
                             <BottomBar />
-                       
+
                 {/* <Drawing /> */}
                     </TodoProvider>
                 </AuthContext>
