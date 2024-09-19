@@ -10,6 +10,8 @@ import { useUserContext } from "@context/AuthContext"
 import NewDrawer from "./newDrawer"
 import { useRouter } from "next/navigation"
 import { FaUser } from "react-icons/fa6"
+import { ModeToggle } from "./ui/theme-button"
+import ThemeToggle from "@provider/theme-provider"
 
 
 
@@ -20,7 +22,6 @@ const Nav = () => {
     const { user, isLoading } = useUserContext();
      const signOut = async() => {
         await signOutAccount();
-        revalidatePath('/ ');
     }
     const reminder = () => {
         router.push('/reminder')
@@ -37,20 +38,21 @@ const Nav = () => {
 
             <div className="flex gap-14">
                { isLoading ? <Loader />
-               :  <p>
+               :  <p className="mt-2">
                     hey, {user.name}
                </p>
                }
 
                 <NewDrawer>
-                    <FaRegEdit className="mt-1" />
+                    <FaRegEdit className="mt-3" />
                 </NewDrawer>
 
                <button onClick={reminder}>
                     <FaCalendar />
                </button>
 
-                <FaRegMoon className="mt-[5px]"/>
+                {/* <FaRegMoon className="mt-[5px]"/> */}
+                <ThemeToggle />
 
 
                 <button onClick={profile}>

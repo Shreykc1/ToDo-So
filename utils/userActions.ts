@@ -1,5 +1,6 @@
 import { account, avatars, databases, appwriteConfig, storage } from '@app/api/config';
 import { ID, Query } from 'appwrite';
+import { revalidatePath } from 'next/cache';
 
 
 
@@ -101,7 +102,8 @@ export async function signInAccount(email: string, password: string) {
 
 export async function signOutAccount() {
   try {
-    const session = await account.deleteSession("current")
+    const session = await account.deleteSession("current");
+    revalidatePath('/');
     return session
   } catch (error) {
     console.log(error)

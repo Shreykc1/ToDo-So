@@ -7,6 +7,8 @@ import Drawing from "@components/utils/drawing";
 import AuthContext from "@context/AuthContext";
 import { TodoProvider } from "@context/TodoContext";
 import BottomBar from "@components/bottom-bar";
+import { ThemeProvider } from "@provider/theme-provider";
+import { useTheme } from "next-themes";
 
 
 export const metadata: Metadata = {
@@ -19,18 +21,22 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" suppressHydrationWarning >
             <meta name="google" content="notranslate" />
             <body>
                 <AuthContext >
                     <TodoProvider>
                         {/* <CustomCursor /> */}
-                        <main className="main">
+
+                        <main className={`main `}>
                             <Nav />
                             {children}
                         </main>
                             <BottomBar />
+                       
                 {/* <Drawing /> */}
                     </TodoProvider>
                 </AuthContext>

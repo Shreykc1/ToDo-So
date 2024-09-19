@@ -43,7 +43,7 @@
     color: #F8F8FD;
     background-color: #09090A;
 }
-.main {
+/* .main {
   background-color: #EFEFEF;
   width: 100vw;
   min-height: 100vh;
@@ -52,7 +52,7 @@
   padding: 20px 24px 160px 24px;
   color: #09090A;
   font-family: 'SF';
-}
+} */
 
 /* @media screen and (max-width: 640px) {
   .main {
@@ -62,10 +62,13 @@
 
 /* Tailwind Styles */
 
+.main{
+    @apply dark:bg-dark-3 dark:text-[#EFEFEF] bg-[#EFEFEF] text-dark-3 w-screen h-screen flex flex-col pt-[20px] px-[24px] pb-[160px] font-sf !important;
+}
+
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6 bg-[#EFEFEF]
-  text-[#09090A] font-sf
-  ;
+  text-[#09090A] font-sf;
 }
 
 .white_btn {
