@@ -13,8 +13,10 @@ module.exports = {
     theme: {
     	extend: {
             boxShadow: {
-                'custom': 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px',
+                'custom': 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;',
                 'custom-inset': 'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
+                'custom2': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;',
+                'custom3': 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
               },
     		fontFamily: {
     			satoshi: ['Satoshi', 'sans-serif'],

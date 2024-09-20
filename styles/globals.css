@@ -66,11 +66,11 @@
     @apply dark:bg-dark-3 dark:text-[#EFEFEF] bg-primary-500 text-dark-3 w-screen h-screen flex flex-col pt-[20px] px-[24px] pb-[160px] font-sf !important;
 } */
 .main{
-    @apply bg-primary-500 text-dark-3 w-screen h-full flex flex-col pt-[18px] px-[18px] pb-[18px] font-sf !important;
+    @apply bg-gradient-to-bl from-purple-500 to-violet-600 text-dark-3 w-screen h-screen flex flex-col pt-[18px] px-[18px] pb-[18px] font-sf !important;
 }
 
 .app{
-  @apply dark:bg-dark-3 bg-[#EFEFEF] dark:text-[#EFEFEF] text-dark-3 rounded-lg p-[26px] shadow-custom-inset !important;
+  @apply h-[96vh] dark:bg-dark-3 bg-[#EFEFEF] dark:text-[#EFEFEF] text-dark-3 rounded-lg p-[26px] shadow-custom2 !important;
 }
 
 .white_btn {

@@ -9,12 +9,12 @@ const BottomBar = () => {
     const router  =  useRouter();
 
   return (
-    <section className='sm:hidden flex items-center fixed mx-4 bottom-2 h-16 w-[92%] rounded-2xl shadow-2xl px-7'>
-        <div className='flex-between h-full gap-14'>
+    <section className='sm:hidden flex-center mt-44 h-16 rounded-2xl px-16 w-full'>
+        <div className='flex-between h-full gap-14 px-6 mx-2'>
             {
                 BottomBarLinks.map((item,index)=>(
                     <div key={index} className='rounded-lg border-2 hover:scale-110' >
-                        <button className='h-10 w-10 p-1' onClick={()=>router.push(item.href)}>
+                        <button className='h-8 w-8 p-1 max-sm:mx-0 mx-4' onClick={()=>router.push(item.href)}>
                             {item.icon}
                         </button>
                     </div>

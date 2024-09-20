@@ -31,13 +31,13 @@ export default function RootLayout({
                     <TodoProvider>
                         {/* <CustomCursor /> */}
 
-                        <main className={`main `}>
+                        <main className={`main`}>
                             <div className="app">
                             <Nav />
                             {children}
+                            <BottomBar />
                             </div>
                         </main>
-                            <BottomBar />
 
                 {/* <Drawing /> */}
                     </TodoProvider>
