@@ -13,6 +13,8 @@ const ThemeToggle = () => {
             setIsDarkMode(true);
             document.documentElement.classList.add('dark');
         }
+
+
     }, []);
 
     const toggleTheme = () => {

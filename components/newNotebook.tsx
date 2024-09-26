@@ -107,7 +107,7 @@ useGSAP(()=>{
             value={description}
             />
 
-            <div className="flex-between w-full mt-10">
+            <div className="flex-between w-full mt-5">
                 <Button className="w-20 font-normal tracking-wide bg-dark-3 border border-gray-500 hover:bg-light-2
                 hover:text-dark-3 text-light-2 shadow-none" type="submit">
                     Save
